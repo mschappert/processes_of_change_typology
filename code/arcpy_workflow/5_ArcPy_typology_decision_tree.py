@@ -27,7 +27,7 @@ main_workspace = r"F:\GitHub\typology\data" # main workspace for the project
 ######### 1.A. Time Series (TS) #########
 ## Remap - Time Series
 ## NOTE run each metric type separately to remap (set metric_type below)
-metric_type = "pn"  # "edge", "area", or "pn"
+metric_type = "area"  # "edge", "area", or "pn"
 input_raster = os.path.join(main_workspace, "4_TS_and_TI", "TS_zscore", metric_type, f"{metric_type}_MK_tau_z.tif")
 output_dir   = os.path.join(main_workspace, "5_Typology", "remap_timeseries", metric_type)
 
@@ -299,7 +299,7 @@ def reclassify_typology(combine_type):
             recode_map = {
                 111: 1, 112: 1, 113: 1,  # attrition
                 121: 2, 122: 2, 123: 2, 131: 2, 132: 2, 133: 2,  # aggregation
-                211: 3,  # shrinkage
+                211: 3,  # shrinkage333333
                 213: 4,  # perforation
                 221: 5, 223: 5,  # deformation
                 222: 6, 220: 6,  # persistent
