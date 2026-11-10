@@ -27,7 +27,7 @@ main_workspace = r"F:\GitHub\typology\data" # main workspace for the project
 ######### 1.A. Time Series (TS) #########
 ## Remap - Time Series
 ## NOTE run each metric type separately to remap (set metric_type below)
-metric_type = "area"  # "edge", "area", or "pn"
+metric_type = "pn"  # "edge", "area", or "pn"
 input_raster = os.path.join(main_workspace, "4_TS_and_TI", "TS_zscore", metric_type, f"{metric_type}_MK_tau_z.tif")
 output_dir   = os.path.join(main_workspace, "5_Typology", "remap_timeseries", metric_type)
 
@@ -347,7 +347,7 @@ def reclassify_typology(combine_type):
                 for row in cursor:
                     if row[0] in typology_labels:
                         row[2] = typology_labels[row[0]]
-                        row[3] = row[1] * 0.0009
+                        row[3] = row[1] * 0.00101679 #0.0009 for 30m pixels ######### make it a paramenter in the update
                         cursor.updateRow(row)
 
             print(f"Typology reclassification successful: {output_path}")
@@ -369,20 +369,6 @@ if __name__ == "__main__":
     #     rmp_results = remap_time_interval(metric_type)
     # elif combine_type == "timeseries":
     #     rmp_results = remap_time_series(metric_type)
-    # rmp_duration = time.time() - rmp_start
-    # print("Remap completed in {:.0f} mins. {:.2f} sec.".format(rmp_duration // 60, rmp_duration % 60))
-
-    # # Remap Raster - Time Series- v1
-    # print("Starting -- Time Series -- remapping process...")
-    # rmp_start = time.time()
-    # rmp_results = remap_time_series(metric_type)
-    # rmp_duration = time.time() - rmp_start
-    # print("Remap completed in {:.0f} mins. {:.2f} sec.".format(rmp_duration // 60, rmp_duration % 60))
-
-     # # Remap Raster - Time Interval- v1
-    # print("Starting -- Time Interval -- remapping process...")
-    # rmp_start = time.time()
-    # rmp_results = remap_time_interval(metric_type)
     # rmp_duration = time.time() - rmp_start
     # print("Remap completed in {:.0f} mins. {:.2f} sec.".format(rmp_duration // 60, rmp_duration % 60))
 
@@ -414,6 +400,24 @@ if __name__ == "__main__":
     
     
     ### NOTES ###
+    
+        # # Remap Raster - Time Series- v1
+    # print("Starting -- Time Series -- remapping process...")
+    # rmp_start = time.time()
+    # rmp_results = remap_time_series(metric_type)
+    # rmp_duration = time.time() - rmp_start
+    # print("Remap completed in {:.0f} mins. {:.2f} sec.".format(rmp_duration // 60, rmp_duration % 60))
+
+     # # Remap Raster - Time Interval- v1
+    # print("Starting -- Time Interval -- remapping process...")
+    # rmp_start = time.time()
+    # rmp_results = remap_time_interval(metric_type)
+    # rmp_duration = time.time() - rmp_start
+    # print("Remap completed in {:.0f} mins. {:.2f} sec.".format(rmp_duration // 60, rmp_duration % 60))
+
+    
+    
+    
     
     # Debug: Check paths
     # print(f"Input raster: {input_raster}")

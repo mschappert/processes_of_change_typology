@@ -16,6 +16,7 @@ dependencies:
   - rasterio           # raster I/O
   - stackstac=0.5.0    # cloud-optimized GeoTIFF stack processing
   - gdal               # raster/vector geospatial data handling
+  - openpyxl           # Excel file I/O
   # Geospatial
   - geopandas=1.0.1    # vector data operations
   - shapely=2.0.5      # geometric operations on vector data
